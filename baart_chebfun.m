@@ -81,9 +81,3 @@ if (nargout>=3)
   end
 end
 
-%%% Local Variables: 
-%%% mode:matlab
-%%% flyspell-mode:nil
-%%% mode:flyspell-prog
-%%% ispell-local-dictionary: "american"
-%%% End: 

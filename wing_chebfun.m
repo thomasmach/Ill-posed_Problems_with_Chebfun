@@ -88,10 +88,3 @@ if (nargout>=3)
   g = chebfun(@(s) (exp(-s*t1^2)-exp(-s*t2^2))/(2*s),[0 1],'eps',1e-16,'vectorize');
 end
 
-
-%%% Local Variables: 
-%%% mode:matlab
-%%% flyspell-mode:nil
-%%% mode:flyspell-prog
-%%% ispell-local-dictionary: "american"
-%%% End: 

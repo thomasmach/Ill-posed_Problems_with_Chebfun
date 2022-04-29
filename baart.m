@@ -51,6 +51,7 @@ function [A,b,x,t] = baart(n)
 % ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 % POSSIBILITY OF SUCH DAMAGE.
 %
+
 % Check input.
 if (rem(n,2)~=0), error('The order n must be even'), end
 
