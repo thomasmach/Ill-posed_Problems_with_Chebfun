@@ -21,10 +21,7 @@ switch (parameterchoice)
 		err = abs(sum(err)-(eta*e)^2);
 
 	case {3}
-		% err=lambda^(4)*dd.^2.*sigma.^2./(sigma.^2+lambda^2).^2;
-		% err=abs(sum(err)-(eta*e)^2);
 		err = lambda^6*dd'*((sigma.^2+lambda^2).^(-3).*dd);
-		
 		err=abs((err)-(eta*e)^2);
 end
 

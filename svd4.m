@@ -1,14 +1,26 @@
 function [u12f, si, v12f] = svd4(ke, d)
-
+%% SVD of a four dimensional function 
+% The function ues adaptive cross approximation and computes crosses 
+% ke(s1,s2) x ke(t1,t2), which are then orhogonalized
+%
 % INPUT:
 %
 % ke ......... function handle of ke(s1,s2,t1,t2)
 %
-% d .......... dimensions of s1, s2, t1, and t2 [s1_lb s1_ub s2_lb s2_ub ... ]
+% d .......... dimensions of s1, s2, t1, and t2 as 
+%              [s1_lb s1_ub s2_lb s2_ub ... ], where s1 \in [s1_lb, s1_ub]
 %
 % OUTPUT:
 %
 % ke(s1,s2,t1,t2) = \sum_i u12_i(s1,s2) s_i v12_i(t1,t2)
+% 
+% u12f ....... strucure, where each entry is a chebfun corresponding to 
+%              u12_i 
+%
+% si ......... singulare values on the diagonal of a matrix
+%
+% u12f ....... strucure, where each entry is a chebfun corresponding to 
+%              u12_i 
 % 
 % 
 np = 5000;

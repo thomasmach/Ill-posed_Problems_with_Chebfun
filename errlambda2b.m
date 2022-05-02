@@ -1,10 +1,10 @@
+function [err2] = errlambda2b(A,bnoise,lambda,s,foriercoeff,V,eta,e)
 %% Error function for fminbnd optimization -- discrete rhs
 % The purpose of this function is to evaluate
 % || Ax - g || + lambda || x || - delta
 %
-function [err2] = errlambda2b(A,bnoise,lambda,s,foriercoeff,V,eta,e)
 
-x_lambda = V*(s.*foriercoeff./(s.^2+lambda^2)); % 
+x_lambda = V*(s.*foriercoeff./(s.^2+lambda^2));
 err2 = abs(weighted_euclidean_norm(A*x_lambda-bnoise)^2-eta^2*e^2);
 
 

@@ -58,6 +58,10 @@
 
      Matlab
 
+ REQUIREMENTS:
+
+     Chebfun 5.7.0 or newer (available from https://github.com/chebfun/chebfun)
+
 ********************************************************************************
 
 This folder contains the following files:

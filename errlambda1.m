@@ -1,10 +1,10 @@
-%%% Error function for fminbnd optimization -- continuous rhs
+function err=errlambda1(parameterchoice,lambda,sigma,gnoise,psi,ke,rk,eta,e,dd)
+%% Error function for fminbnd optimization -- continuous rhs
 % The purpose of this function is to evaluate
 % || Ax - g || + lambda || x || - delta
 %
 % XXXX add discription what parameterchoice exactly does XXXX
 % 
-function err=errlambda1(parameterchoice,lambda,sigma,gnoise,psi,ke,rk,eta,e,dd)
  
 beta = dd.*sigma./(sigma.^2+lambda^2);  
 x = psi(:,1:rk)*beta(1:rk,1); 
@@ -19,15 +19,11 @@ switch (parameterchoice)
 		err = abs(sum(err)-(eta*e)^2);
 
 	case {3}
-		% err=lambda^(4)*dd.^2.*sigma.^2./(sigma.^2+lambda^2).^2;
-		% err=abs(sum(err)-(eta*e)^2);
 		err = lambda^6*dd'*((sigma.^2+lambda^2).^(-3).*dd);
-		
 		err=abs((err)-(eta*e)^2);
-end
-
 
 end
+
 
 
 %%% Local Variables: 

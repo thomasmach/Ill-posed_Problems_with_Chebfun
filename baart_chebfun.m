@@ -1,5 +1,5 @@
 function [ke,f,g] = baart_chebfun(f0)
-% BAART Test problem: Fredholm integral equation of the first kind.
+%% BAART Test problem: Fredholm integral equation of the first kind.
 %
 % [ke,f,g] = baart()
 %
