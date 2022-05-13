@@ -1,79 +1,73 @@
 function [u12f, si, v12f] = svd4(ke, d)
 %% SVD of a four dimensional function 
-% The function ues adaptive cross approximation and computes crosses 
+% The function uses adaptive cross approximation and computes crosses 
 % ke(s1,s2) x ke(t1,t2), which are then orhogonalized
 %
 % INPUT:
 %
-% ke ......... function handle of ke(s1,s2,t1,t2)
+% ke ......... function handle
+%                representing ke(s1,s2,t1,t2)
 %
-% d .......... dimensions of s1, s2, t1, and t2 as 
-%              [s1_lb s1_ub s2_lb s2_ub ... ], where s1 \in [s1_lb, s1_ub]
+% d .......... vector
+%                dimensions of s1, s2, t1, and t2 as 
+%                [s1_lb s1_ub s2_lb s2_ub ... ], where s1 \in [s1_lb, s1_ub]
 %
 % OUTPUT:
 %
 % ke(s1,s2,t1,t2) = \sum_i u12_i(s1,s2) s_i v12_i(t1,t2)
 % 
-% u12f ....... strucure, where each entry is a chebfun corresponding to 
-%              u12_i 
+% u12f ....... strucure
+%                each entry is a chebfun corresponding to u12_i
 %
-% si ......... singulare values on the diagonal of a matrix
 %
-% u12f ....... strucure, where each entry is a chebfun corresponding to 
-%              u12_i 
+% si ......... diagonal matrix
+%                singulare values on the diagonal of a matrix
+%
+% u12f ....... strucure,
+%                each entry is a chebfun corresponding to u12_i 
 % 
-% 
+ 
+% no of test points
 np = 5000;
+% tolerance
 tol = 1e-4;
 
-
-
 % draw np random points in the domain
-
 s1r = (d(2)-d(1))*rand(np,1) + d(1);
 s2r = (d(4)-d(3))*rand(np,1) + d(3);
 t1r = (d(6)-d(5))*rand(np,1) + d(5);
 t2r = (d(8)-d(7))*rand(np,1) + d(7);
 
-
-clear function_value_random_points;
+% evaluate function ke in the test points
 for ii=np:-1:1
 	function_value_random_points(ii,1) = ke(s1r(ii),s2r(ii),t1r(ii),t2r(ii));
 end
 
+% index set unused points
 ins = ones(np,1);
 
-kf = @(s1,s2,t1,t2) 0;
+%kf = @(s1,s2,t1,t2) 0;
 
+% find maximum among the test points
 [ma, ind] = max(abs(function_value_random_points));
 mai = ma;
-s = [];
 
+% prepare storage variables
+s = [];
 kk = 0;
-%[function_value_random_points ins]
 II = [];
 
 current_function_value_random_points = function_value_random_points;
 
 while (ma>tol*mai)
 	kk = kk + 1;
-	
-	%ind
-	
-	% compute cross
+		
+	% compute cross as cross of chebfun2
 	u12n = chebfun2(@(s1,s2) ke(s1,s2,t1r(ind),t2r(ind)), [d(1) d(2) d(3) d(4)],'eps',1e-16,'vectorize','splitting','on');
 	v12n = chebfun2(@(t1,t2) ke(s1r(ind),s2r(ind),t1,t2), [d(5) d(6) d(7) d(8)],'eps',1e-16,'vectorize','splitting','on');	
-	if (kk == 1)
-		clear u12;
-		clear v12;
-		u12{1} = u12n;
-		v12{1} = v12n;
-
-	else
-		u12{kk} = u12n;
-		v12{kk} = v12n;
-
-	end
+	
+	u12{kk} = u12n;
+	v12{kk} = v12n;
 	
 	% cross point
 	snew = u12n(s1r(ind),s2r(ind));
@@ -90,17 +84,11 @@ while (ma>tol*mai)
 		
 	end
 	II = [II ind];
-	
-	
-	% update kf
-	kf = @(s1,s2,t1,t2) kff(s1,s2,t1,t2,kk,s,u12,v12);
-	
 
 	% update function_value_random_points
 	current_function_value_random_points = function_value_random_points - diag(u12_discrete/s*(transpose(v12_discrete)));
 	ins(ind) = 0;
 	[ma, ind] = max(abs(current_function_value_random_points));
-	%[current_function_value_random_points ins]
 
 	check = [current_function_value_random_points(not(ins))];
 	if (max(abs(check))>1e-10)
@@ -112,7 +100,7 @@ end
 
 
 
-% qr decomposition of u12 with modified Gram-Schmidt
+% QR decomposition of u12 with modified Gram-Schmidt
 Ru = zeros(kk,kk);
 for ii = 1:kk
 	% orthogonalize against previous columns
@@ -135,8 +123,7 @@ for ii = 1:kk
 	end
 end
 
-
-% qr decomposition of v with modified Gram-Schmidt
+% QR decomposition of v12 with modified Gram-Schmidt
 Rv = zeros(kk,kk);
 for ii = 1:kk
 	% orthogonalize against previous columns
@@ -159,13 +146,10 @@ for ii = 1:kk
 	end
 end
 
-%keyboard
+% SVD of Ru s^-1 Rv^T
 [ui,si,vi] = svd(Ru*inv(s)*Rv',0);
-%si
 
-
-
-%% form u12 * ui
+% form u12 * ui
 for ii = 1:kk
 	t = u12{1}*ui(1,ii);
 	for jj=2:kk
@@ -174,6 +158,7 @@ for ii = 1:kk
 	u12f{ii} = t;
 end
 
+% form v12 * vi
 for ii = 1:kk
 	t = v12{1}*vi(1,ii);
 	for jj=2:kk

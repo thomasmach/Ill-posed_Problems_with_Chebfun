@@ -3,17 +3,21 @@ function [ke,f,g] = baart_chebfun(f0)
 %
 % [ke,f,g] = baart()
 %
-% ke           chebfun2
+% INPUT:
+%
+% f0 ......... complex
+%                constant added to original f(t), default 0
+%
+% OUTPUT:
+%
+% ke ......... chebfun2
 %                the function ke(s,t)
 %
-% f            chebfun 
+% f .......... chebfun 
 %                the function f(t)
 % 
-% g            chebfun 
+% g .......... chebfun 
 %                the function g(s)
-%
-% f0           complex
-%                constant added to original f(t), default 0
 %
 %         \pi
 %  g(s) =  ∫   ke(s,t) f(t) dt
