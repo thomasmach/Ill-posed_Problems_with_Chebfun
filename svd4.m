@@ -30,6 +30,7 @@ function [u12f, si, v12f] = svd4(ke, d)
  
 % no of test points
 np = 5000;
+
 % tolerance
 tol = 1e-4;
 
@@ -46,8 +47,6 @@ end
 
 % index set unused points
 ins = ones(np,1);
-
-%kf = @(s1,s2,t1,t2) 0;
 
 % find maximum among the test points
 [ma, ind] = max(abs(function_value_random_points));
@@ -89,6 +88,8 @@ while (ma>tol*mai)
 	% update function_value_random_points
 	current_function_value_random_points = function_value_random_points - diag(u12_discrete/s*(transpose(v12_discrete)));
 	ins(ind) = 0;
+
+	% find maximum among the test points after the rank-1 update
 	[ma, ind] = max(abs(current_function_value_random_points));
 
 	check = [current_function_value_random_points(not(ins))];
@@ -148,7 +149,8 @@ for ii = 1:kk
 end
 
 % SVD of Ru s^-1 Rv^T
-[ui,si,vi] = svd(Ru*inv(s)*Rv',0);
+% use Matlab's SVD
+[ui,si,vi] = svd((Ru/s)*Rv',0);
 
 % form u12 * ui
 for ii = 1:kk

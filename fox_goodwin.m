@@ -1,7 +1,7 @@
-function [A,b,x,t] = foxgood(n)
-%% FOXGOOD Test problem: severely ill-posed problem.
+function [A,b,x,t] = fox_goodwin(n)
+%% FOX-GOODWIN (aka FOXGOOD) Test problem: severely ill-posed problem.
 %
-% [A,b,x] = foxgood(n)
+% [A,b,x] = fox_goodwin(n)
 %
 % This is a model problem which does not satisfy the
 % discrete Picard condition for the small singular values.

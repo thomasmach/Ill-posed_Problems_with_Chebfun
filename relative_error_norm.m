@@ -45,9 +45,9 @@ assert(prod(t<=ft(2))==1);
 % first interval
 ii = 1;
 if (opt)
-	g = chebfun(@(y) (x(1)+(y-t(1))/(t(2)-t(1))*(x(2)-x(1)))-f(y), [ft(1), t(2)],'splitting','on');
+	g = chebfun(@(y) (x(ii)+(y-t(ii))/(t(ii+1)-t(ii))*(x(ii+1)-x(ii)))-f(y), [ft(1), t(ii+1)],'splitting','on');
 else
-	g = chebfun(@(y) x(1)-f(y), [ft(1), 0.5*(t(1)+t(2))],'splitting','on');
+	g = chebfun(@(y) x(ii)-f(y), [ft(1), 0.5*(t(ii)+t(ii+1))],'splitting','on');
 end
 r = norm(g)^2;
 
@@ -61,22 +61,23 @@ for ii=2:n-2
 	r = r+norm(g)^2;
 end
 
-% final interval
-ii = n;
+% final interval(s)
 if (opt)
-	g = chebfun(@(y) (x(n-1) + (y-t(n-1))/(t(n)-t(n-1))*(x(n)-x(n-1)))-f(y), [t(n-1), ft(2)],'splitting','on');	
+	ii = n-1;
+	g = chebfun(@(y) (x(ii) + (y-t(ii))/(t(ii+1)-t(ii))*(x(ii+1)-x(ii)))-f(y), [t(ii), ft(2)],'splitting','on');	
 else
-	ii = n - 1;	
+
+	ii = n-1;	
 	if (n>2)
 		g = chebfun(@(y) x(ii)-f(y), [0.5*(t(ii-1)+t(ii)), 0.5*(t(ii)+t(ii+1))],'splitting','on');
 		r = r+norm(g)^2;
 	end
 	
 	ii = n;
-	g = chebfun(@(y) x(n)-f(y), [0.5*(t(n-1)+t(n)), ft(2)],'splitting','on');
+	g = chebfun(@(y) x(ii)-f(y), [0.5*(t(ii-1)+t(ii)), ft(2)],'splitting','on');
 
 end
-r = r+norm(g)^2;
+r = r + norm(g)^2;
 r = sqrt(r) / norm(f);
 
 
