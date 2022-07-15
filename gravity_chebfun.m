@@ -1,22 +1,28 @@
 function [ke,f,g] = gravity_chebfun(example,d)
 % GRAVITY Test problem: 1-D gravity surveying model problem
+%
 % [ke,f,g] = gravity(n,example,a,b,d)
 %
-% ke           chebfun2
-%                the function ke(s,t)
+% INPUT:
 %
-% f            chebfun 
-%                the function f(t)
-% 
-% g            chebfun 
-%                the function g(s)
-%
-% example      integer \in {1,2,3}
+% example .... integer \in {1,2,3}
 %                example no., default 1
 %
-% d            complex
+% d .......... double
 %                parameter, default 0.25 
 %                (larger d results in a smaller rank of ke)
+%
+% OUTPUT:
+%
+% ke ......... chebfun2
+%                the function ke(s,t)
+%
+% f .......... chebfun 
+%                the function f(t)
+% 
+% g .......... chebfun 
+%                the function g(s) (computed based on ke and f)
+%
 %
 %          1
 %  g(s) =  ∫   ke(s,t) f(t) dt
@@ -96,13 +102,16 @@ if (nargout>=2)
       
     case 3
       f = chebfun(@(t) 1+(t<1/3),[0 1],'eps',1e-16,'vectorize','splitting','on');
-    otherwise
+		
+		otherwise
       error('Illegal value of example')
   end
 end
+
 if (nargout>=3)
   g = sum(ke*f,2);
 end
+
 
 %%% Local Variables: 
 %%% mode:matlab

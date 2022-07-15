@@ -78,6 +78,7 @@ if (nargout>=3)
   x = zeros(n,1); x(I) = sqrt(h)*ones(length(I),1);
 end
 
+% provide the used discretization.
 if (nargout==4)
 	t = (.5:n-.5)'*h;
 end

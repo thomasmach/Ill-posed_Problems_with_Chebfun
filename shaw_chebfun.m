@@ -1,24 +1,37 @@
 function [ke,f,g] = shaw_chebfun()
 %% SHAW Test problem: one-dimensional image restoration model.
 %
-% kernel:
-% ke(s,t) = (cos(s)+cos(t))*(sin(u)/u)^2, with
-% u = pi*(sin(s)+sin(t))
+% [ke,f,g] = shaw_chebfun()
+%
+% INPUT: NONE
+%
+% OUTPUT:
+%
+% ke ......... chebfun2
+%                the function ke(s,t)
+%
+% f .......... chebfun 
+%                the function f(t)
 % 
-% solution:
-% f(t) = a1*exp(-c1*(t - t1)^2) + a2*exp(-c2*(t - t2)^2)
-%
-%   / pi/2
-%   |
-%   | k(s,t) f(t) dt = g(s)
-%   |
-%   /-pi/2
-%
-% a1 = 2; c1 = 6; t1 =  .8;
-% a2 = 1; c2 = 2; t2 = -.5;
+% g .......... chebfun 
+%                the function g(s)
 %
 %
-% s,t \in [-pi/2,pi/2]
+%         \pi/2
+%  g(s) =  ∫   ke(s,t) f(t) dt
+%        -\pi/2
+%
+% A first-kind Fredholm integral equation with kernel
+%    ke(s,t) = (cos(s)+cos(t))*(sin(u)/u)^2, with 
+%          u = pi*(sin(s)+sin(t))
+% and with integration intervals
+% s \in [-pi/2,pi/2],  t \in [-pi/2,pi/2].
+% The solution is given by
+%    f(t) = a1*exp(-c1*(t - t1)^2) + a2*exp(-c2*(t - t2)^2), with
+%      a1 = 2; c1 = 6; t1 =  .8;
+%      a2 = 1; c2 = 2; t2 = -.5;
+%
+% The right-hand side is computed based on ke and f.
 %
 % Reference: C. B. Shaw, Jr., "Improvements of the resolution of
 % an instrument by numerical solution of an integral equation",

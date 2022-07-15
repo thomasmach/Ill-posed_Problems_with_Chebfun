@@ -1,38 +1,43 @@
 function [ke,f,g] = wing_chebfun(t1,t2)
 % WING Test problem with a discontinuous solution.
 %
-% ke           chebfun2
+% [ke,f,g] = wing_chebfun(t1,t2)
+%
+% INPUT:
+%
+% t1 ......... double 
+%                left jump from 0 to 1 at t1
+%                default: 1/3
+%
+% t2 ......... doublex
+%                right jump from 1 to 0 at t2
+%                default: 2/3
+%
+%
+% OUTPUT:
+%
+% ke ......... chebfun2
 %                the function ke(s,t)
 %
-% f            chebfun 
+% f .......... chebfun 
 %                the function f(t)
 % 
-% g            chebfun 
+% g .......... chebfun 
 %                the function g(s)
-%
-% discretized outputs
-%
-% A            matrix of size n x n
-%                discretized integral operator 
-%
-% x            vector of length n
-%                discretized exact solution
-%
-% b            vector of length n
-%                discretized right hand side
-%
-% inputs
-% t1, t2       real numbers in (0,1).
 %
 %          1
 %  g(s) =  ∫   ke(s,t) f(t) dt
 %          0
 % 
+% A first-kind Fredholm integral equation with kernel
 %  ke(s,t) = t*exp(-s*t^2)
+% and with integration intervals
+% s \in [0,1],  t \in [0,1].
+% The solution is given by
 %         | 1,  t \in [t1,t2],
 %  f(t) = {
 %         | 0,  else
-% 
+% the right hand side is then
 %  g(s) = (exp(-s*t1^2)-exp(-s*t2^2))/(2*s)
 %
 % Here, t1 and t2 are constants satisfying t1 < t2.  If they are
@@ -80,10 +85,15 @@ else
   if (t1 > t2), error('t1 must be smaller than t2'), end
 end
 
+% kernel
 ke = chebfun2(@(s,t) t*exp(-s*t^2),[0 1 0 1],'eps',1e-16,'vectorize');
+
+% solution
 if (nargout>=2)
   f = chebfun(@(t) ((t1<t)&&(t<t2)),[0 1],'eps',1e-16,'vectorize','splitting','on');
 end
+
+% right hand side
 if (nargout>=3)
   g = chebfun(@(s) (exp(-s*t1^2)-exp(-s*t2^2))/(2*s),[0 1],'eps',1e-16,'vectorize');
 end

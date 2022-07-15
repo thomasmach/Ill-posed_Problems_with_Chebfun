@@ -26,18 +26,18 @@ function [ke,f,g] = baart_chebfun(f0)
 % A first-kind Fredholm integral equation with kernel
 %    ke(s,t) = exp(s*cos(t))
 % and with integration intervals
-%  s \in [0,pi/2],  t \in [0,pi].
+% s \in [0,pi/2],  t \in [0,pi].
 % The solution is given by
 %    f(t) = f0 + sin(t).
 %
-% If f0==0 then the right hand side is 
+% If f0==0 then the right-hand side is 
 %    g(s) = 2*sinh(s)/s.
 %
 % Reference: M. L. Baart, "The use of auto-correlation for pseudo-
 % rank determination in noisy ill-conditioned linear least-squares
 % problems", IMA J. Numer. Anal. 2 (1982), 241-247. Example 4.2
 %
-% Copyright (c) 2020, Abdulaziz Alqahtani, Lothar Reichel, Thomas Mach
+% Copyright (c) 2022, Abdulaziz Alqahtani, Lothar Reichel, Thomas Mach
 % This file has been modified. It was originally published by
 % Copyright (c) 2015, Per Christian Hansen
 % All rights reserved.
@@ -77,6 +77,7 @@ ke = chebfun2(@(s,t) exp(s*cos(t)) ,[0 pi/2 0 pi],'eps',1e-16,'vectorize');
 if (nargout>=2)
   f = chebfun(@(t) f0+sin(t),[0 pi],'eps',1e-16,'vectorize');
 end
+
 if (nargout>=3)
   if (f0==0)
     g = chebfun(@(s) 2*sinh(s)/s,[0 pi/2],'eps',1e-16,'vectorize');

@@ -3,6 +3,8 @@ function [u12f, si, v12f] = svd4(ke, d)
 % The function uses adaptive cross approximation and computes crosses 
 % ke(s1,s2) x ke(t1,t2), which are then orhogonalized
 %
+% [u12f, si, v12f] = svd4(ke, d)
+%
 % INPUT:
 %
 % ke ......... function handle
@@ -18,7 +20,6 @@ function [u12f, si, v12f] = svd4(ke, d)
 % 
 % u12f ....... strucure
 %                each entry is a chebfun corresponding to u12_i
-%
 %
 % si ......... diagonal matrix
 %                singulare values on the diagonal of a matrix

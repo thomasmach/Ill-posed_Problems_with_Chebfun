@@ -21,7 +21,7 @@ function [A,b,x,t] = baart(n)
 %
 % Per Christian Hansen, IMM, 09/16/92.
 %
-% Copyright (c) 2020, Abdulaziz Alqahtani, Lothar Reichel, Thomas Mach
+% Copyright (c) 2022, Abdulaziz Alqahtani, Lothar Reichel, Thomas Mach
 % This file has been modified. It was originally published by
 % Copyright (c) 2015, Per Christian Hansen
 % All rights reserved.
@@ -84,6 +84,7 @@ if (nargout>=3)
   x = -diff(cos((0:n)'*ht))/sqrt(ht);
 end
 
+% provide the used discretization.
 if (nargout==4)
 	t = (.5:n-.5)'*ht;
 end

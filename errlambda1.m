@@ -1,28 +1,54 @@
-function err=errlambda1(parameterchoice,lambda,sigma,gnoise,psi,ke,rk,eta,e,dd)
+function [err] = errlambda1(lambda,sigma,gnoise,psi,ke,rk,eta,e,dd)
 %% Error function for fminbnd optimization -- continuous rhs
 % The purpose of this function is to evaluate
-% || Ax - g || + lambda || x || - delta
+% | || Ax - g || + lambda || x || - eta * e |
+% This is used as a cost function for the fminbnd optimization to find a suitable
+% lambda.
 %
-% XXXX add discription what parameterchoice exactly does XXXX
+% [err] = errlambda1(lambda,sigma,gnoise,psi,ke,rk,eta,e,dd)
+%
+% INPUT:
+%
+% lambda ............. double
+%                        regularization parameter to be optimized
+%
+% sigma .............. vector
+%                        singular values
+%
+% gnoise ............. chebfun
+%                        noisy right-hand side
+%
+% psi ................ vector of chebfun
+%                        left singular functions
 % 
- 
+% ke ................. chebfun2
+%                        kernel function
+%
+% rk ................. integer
+%                        rank, include the first rk singular values/vectors
+%
+% eta ................ double
+%                        additional factor in the discrepancy principle, 
+%                        choose between 1 and 5
+%
+% e .................. double
+%                        estimation of the norm of the noise contained in gnoise
+%
+% dd ................. vector
+%                        inner product of gnoise with the right singular functions phi
+%
+% OUTPUT:
+%
+% err ................ double 
+%                        value of the cost function
+% 
+
+% computng the solution
 beta = dd.*sigma./(sigma.^2+lambda^2);  
 x = psi(:,1:rk)*beta(1:rk,1); 
 
-switch (parameterchoice)
-
-	case {1}
-		err = abs(norm(sum(transpose(ke)*x,2)-gnoise)^2-eta^2*e^2);
-		
-	case {2}
-		err = (lambda^(4)*dd.^2)./(sigma.^2+lambda^2).^2;
-		err = abs(sum(err)-(eta*e)^2);
-
-	case {3}
-		err = lambda^6*dd'*((sigma.^2+lambda^2).^(-3).*dd);
-		err=abs((err)-(eta*e)^2);
-
-end
+% evaluating the cost function
+err = abs(norm(sum(transpose(ke)*x,2)-gnoise)^2-eta^2*e^2);
 
 
 

@@ -1,22 +1,35 @@
 function [ke,f,g] = fox_goodwin_chebfun()
 % FOX-GOODWIN Test problem: severely ill-posed problem.
+%
 % [ke,f,g] = fox_goodwin_chebfun()
 %
-% ke           chebfun2
+% INPUT: NONE
+%
+% OUTPUT:
+%
+% ke ......... chebfun2
 %                the function ke(s,t)
 %
-% f            chebfun 
+% f .......... chebfun 
 %                the function f(t)
 % 
-% g            chebfun 
+% g .......... chebfun 
 %                the function g(s)
+%
 %
 %          1
 %  g(s) =  ∫   ke(s,t) f(t) dt
 %          0
 %
-% With ke(s,t) = sqrt(s^2 + t^2), f(t) = t, and 
-% g(s) = 1/3 ((1+s^2)^(3/2) - s^3)
+% A first-kind Fredholm integral equation with kernel
+%    ke(s,t) = sqrt(s^2 + t^2)
+% and with integration intervals
+% s \in [0,1],  t \in [0,1].
+% The solution is given by
+%    f(t) = t.
+%
+% The right-hand side is
+%     g(s) = 1/3 ((1+s^2)^(3/2) - s^3)
 %
 % This is a model problem which does not satisfy the
 % discrete Picard condition for the small singular values.
