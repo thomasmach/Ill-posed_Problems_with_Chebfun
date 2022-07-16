@@ -6,9 +6,6 @@ function [wn] = weighted_euclidean_norm(x)
 %
 % INPUT:
 %
-% lambda ............. double
-%                        regularization parameter to be optimized
-%
 % x .................. vector
 %                        vector x of length n
 %
