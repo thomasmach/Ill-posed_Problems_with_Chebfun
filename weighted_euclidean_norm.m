@@ -1,13 +1,10 @@
 function [wn] = weighted_euclidean_norm(x)
-%% Weighted Euclidean norm of a vector x\in\Rn
-% ||x||/sqrt(n)
+%% Weighted Euclidean norm of a vector x\in\Rn,
+% weighted by ||x||/sqrt(n)
 %
 % [wn] = weighted_euclidean_norm(x)
 %
 % INPUT:
-%
-% lambda ............. double
-%                        regularization parameter to be optimized
 %
 % x .................. vector
 %                        vector x of length n
