@@ -46,7 +46,7 @@ of the relevant files.
                                                                              
 ## Authors
 
-  *  Abdulazziz Alqahtani
+  *  Abdulaziz Alqahtani
 		 King Khalid University — Saudi Aradbia
 		 Kent State University —	 USA
 		 e-mail: aalqah11@gmail.com
