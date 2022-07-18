@@ -44,11 +44,11 @@ Some files are modified files originally published by Per Christian Hansen (DTU)
 under a 3-Clause BSD License. The license for these files is stated at the begin
 of the relevant files.
                                                                              
-## AUTHORS:
+## Authors
 
   *  Abdulazziz Alqahtani
 		 King Khalid University — Saudi Aradbia
-		 Kent State University — USA
+		 Kent State University —	 USA
 		 e-mail: aalqah11@gmail.com
 
   *  Thomas Mach
@@ -59,21 +59,21 @@ of the relevant files.
 		 Kent State University — USA
 		 e-mail: reichel@math.kent.edu
 
-## REFERENCE:
+## Reference
 
   -  Solution of Ill-Posed Problems with Chebfun
 		 NUMERICAL ALGORITHMS, TBA.
 		 Package na54 
 
-## SOFTWARE REVISION:
+## Software Revision 
 
   *  V1.0, July 2022
 
-## SOFTWARE LANGUAGE:
+## Software Language 
 
   *  Matlab
 
-## REQUIREMENTS:
+## Requirements 
 
   *  Chebfun 5.7.0 or newer (available from https://github.com/chebfun/chebfun)
 
