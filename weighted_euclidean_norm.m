@@ -6,13 +6,13 @@ function [wn] = weighted_euclidean_norm(x)
 %
 % INPUT:
 %
-% x .................. vector
-%                        vector x of length n
+% x ................. vector
+%                       vector x of length n
 %
 % OUTPUT:
 %
-% wn ................. double 
-%                        value ||x||_2/sqrt(n)
+% wn ................ double 
+%                       value ||x||_2/sqrt(n)
 % 
 
 n = length(x);
