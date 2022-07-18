@@ -18,39 +18,34 @@ Algorithms, 81(3), 773-811.
 
 # README.txt
 
-********************************************************************************
-*                                                                              * 
-* MIT License                                                                  *
-*                                                                              * 
-* Copyright (c) 2022  Abdulaziz Alqahtani, Thomas Mach, Lothar Reichel         *
-*                                                                              * 
-* Permission is hereby granted, free of charge, to any person obtaining a copy *
-* of this software and associated documentation files (the "Software"), to deal*
-* in the Software without restriction, including without limitation the rights *
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell    *
-* copies of the Software, and to permit persons to whom the Software is        *
-* furnished to do so, subject to the following conditions:                     *
-*                                                                              * 
-* The above copyright notice and this permission notice shall be included in   *
-* all copies or substantial portions of the Software.                          *
-*                                                                              * 
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR   *
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,     *
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE  *
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER       *
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,*
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE*
-* SOFTWARE.                                                                    *
-*                                                                              * 
-********************************************************************************
-*                                                                              * 
-* Some files are modified files originally published by Per Christian Hansen   *
-* (DTU) under a 3-Clause BSD License. The license for these files is stated at *
-* the begin of the relevant files.                                             *
-*                                                                              * 
-********************************************************************************
-
- AUTHORS:
+## MIT License                                                               
+                                                                             
+Copyright (c) 2022  Abdulaziz Alqahtani, Thomas Mach, Lothar Reichel         
+                                                                             
+Permission is hereby granted, free of charge, to any person obtaining a copy 
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights 
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell    
+copies of the Software, and to permit persons to whom the Software is        
+furnished to do so, subject to the following conditions:                     
+                                                                             
+The above copyright notice and this permission notice shall be included in   
+all copies or substantial portions of the Software.                          
+                                                                             
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR   
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,     
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE  
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER       
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.                                                                    
+                                                                             
+                                                                             
+Some files are modified files originally published by Per Christian Hansen   
+(DTU) under a 3-Clause BSD License. The license for these files is stated at 
+the begin of the relevant files.                                             
+                                                                             
+## AUTHORS:
 
      ABDULAZZIZ ALQAHTANI
 		 KING KHALID UNIVERSITY - SAUDI ARABIA
@@ -65,28 +60,26 @@ Algorithms, 81(3), 773-811.
 		 KENT STATE UNIVERSITY - USA
 		 E-MAIL: reichel@math.kent.edu
 
- REFERENCE:
+## REFERENCE:
 
   -  Solution of Ill-Posed Problems with Chebfun
-		 NUMERICAL ALGORITHMS, TBA
+		 NUMERICAL ALGORITHMS, TBA.
+		 Package na54 
 
- SOFTWARE REVISION:
+## SOFTWARE REVISION:
 
      V1.0, July 2022
 
- SOFTWARE LANGUAGE:
+## SOFTWARE LANGUAGE:
 
      Matlab
 
- REQUIREMENTS:
+## REQUIREMENTS:
 
      Chebfun 5.7.0 or newer (available from https://github.com/chebfun/chebfun)
 
-********************************************************************************
 
-
-
-This folder contains the following files:
+## This folder contains the following files:
 
 * README.txt
 
