@@ -46,18 +46,18 @@ of the relevant files.
                                                                              
 ## AUTHORS:
 
-  *  ABDULAZZIZ ALQAHTANI
-		 KING KHALID UNIVERSITY - SAUDI ARABIA
-		 KENT STATE UNIVERSITY - USA
-		 E-MAIL: aalqah11@gmail.com
+  *  Abdulazziz Alqahtani
+		 King Khalid University — Saudi Aradbia
+		 Kent State University — USA
+		 e-mail: aalqah11@gmail.com
 
-  *  THOMAS MACH
-		 UNIVERSITY OF POTSDAM - GERMANY
-		 E-MAIL: mach@uni-potsdam.de
+  *  Thomas Mach
+		 University of Potsdam — Germany
+		 e-mail: mach@uni-potsdam.de
 
-  *  LOTHAR REICHEL
-		 KENT STATE UNIVERSITY - USA
-		 E-MAIL: reichel@math.kent.edu
+  *  Lothar Reichel
+		 Kent State University — USA
+		 e-mail: reichel@math.kent.edu
 
 ## REFERENCE:
 
@@ -67,15 +67,15 @@ of the relevant files.
 
 ## SOFTWARE REVISION:
 
-     V1.0, July 2022
+  *  V1.0, July 2022
 
 ## SOFTWARE LANGUAGE:
 
-     Matlab
+  *  Matlab
 
 ## REQUIREMENTS:
 
-     Chebfun 5.7.0 or newer (available from https://github.com/chebfun/chebfun)
+  *  Chebfun 5.7.0 or newer (available from https://github.com/chebfun/chebfun)
 
 
 ## This folder contains the following files:
